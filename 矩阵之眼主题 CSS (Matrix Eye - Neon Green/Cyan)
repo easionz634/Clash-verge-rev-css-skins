@@ -1,0 +1,304 @@
+/* 矩阵之眼主题 - Neon Green/Cyan Terminal */
+
+/* 核心背景与容器 - 沿用原背景图 */
+.css-1li7dvq,
+.css-l3ykv8,
+body,
+html {
+    /* 复用原作者的背景图 */
+    background: url('https://i.postimg.cc/wMpwFMcX/illust-107335180-20231015-190436.png') fixed center/cover !important;
+    position: relative;
+    z-index: 0;
+    overflow-x: hidden !important;
+    /* 强制使用等宽字体，增加终端机感 */
+    font-family: 'Consolas', 'Courier New', monospace !important;
+}
+
+/* 基础滚动修复 */
+.css-1li7dvq,
+.css-l3ykv8,
+body,
+html {
+    overflow-x: hidden !important;
+}
+
+/* 极深叠加层 (The Terminal Screen) - 几乎纯黑，只保留背景微弱可见 */
+.css-l3ykv8::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 极深的叠加层 */
+    background: rgba(0, 5, 5, 0.95) !important;
+    z-index: 1;
+    /* 增加一个扫描线效果 */
+    /* background-image: linear-gradient(0deg, transparent 95%, rgba(0, 255, 0, 0.1) 100%); */
+    /* background-size: 100% 1px; */
+    /* animation: scanline 10s infinite linear; */
+}
+
+/* @keyframes scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 -100vh; }
+} */
+
+/* 主内容容器 (The Data Blocks) - 硬朗线条和亮绿色光晕 */
+.css-1li7dvq > *, .css-l3ykv8 > * {
+    position: relative;
+    z-index: 2;
+    /* 极简深色背景 */
+    background: rgba(0, 10, 10, 0.9) !important;
+    /* 高对比度青色边框 */
+    border: 1px solid rgba(0, 255, 180, 0.5) !important;
+    /* 极小的圆角或直角 */
+    border-radius: 1px !important;
+    /* 初始柔和光晕 */
+    box-shadow: 0 0 4px rgba(0, 255, 180, 0.3), inset 0 0 2px rgba(0, 255, 180, 0.1);
+    transition: all 0.15s ease-out; /* 更快的响应速度 */
+}
+
+/* 大组件悬停效果 - 增强数据流感 */
+.css-1li7dvq > *:hover,
+.css-l3ykv8 > *:hover {
+    background: rgba(5, 15, 15, 0.98) !important;
+    border-color: rgba(0, 255, 255, 1) !important; /* 悬停纯青色 */
+    transform: none;
+    /* 强烈的青色霓虹光晕 */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), inset 0 0 5px rgba(0, 255, 255, 0.4) !important;
+}
+
+/* 选中状态 - 极亮绿色脉冲 */
+.css-1li7dvq > *[class*="selected"],
+.css-l3ykv8 > *[class*="selected"],
+.css-1li7dvq > *[class*="active"],
+.css-l3ykv8 > *[class*="active"] {
+    border: 2px solid rgba(0, 255, 0, 1) !important; /* 纯绿色边框 */
+    /* 极亮绿色脉冲光晕 */
+    box-shadow:
+        0 0 35px rgba(0, 255, 0, 0.9),
+        0 0 60px rgba(0, 180, 0, 0.6) !important;
+    background: rgba(0, 20, 10, 0.95) !important;
+    animation: neonPulseGreen 1s infinite alternate ease-in-out !important; /* 更快更急促的脉冲 */
+    z-index: 100 !important;
+}
+
+@keyframes neonPulseGreen {
+    0% {
+        box-shadow:
+            0 0 35px rgba(0, 255, 0, 0.9),
+            0 0 60px rgba(0, 180, 0, 0.6);
+    }
+    100% {
+        box-shadow:
+            0 0 45px rgba(0, 255, 0, 1),
+            0 0 70px rgba(0, 200, 0, 0.8);
+    }
+}
+
+/* --- 滚动条样式 (The Data Channel) --- */
+::-webkit-scrollbar {
+    width: 4px !important; /* 极细 */
+    height: 4px !important;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+::-webkit-scrollbar-thumb {
+    /* 细长的数据流 */
+    background: rgba(0, 255, 180, 0.8) !important;
+    border-radius: 0px !important;
+    box-shadow: 0 0 3px rgba(0, 255, 180, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, 1) !important;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 1);
+}
+
+/* --- 按钮/交互元素 (The Function Key) --- */
+button, .btn, [role="button"] {
+    background: rgba(0, 15, 15, 0.8) !important;
+    border: 1px solid rgba(0, 255, 180, 0.6) !important;
+    color: rgba(200, 255, 200, 1) !important; /* 亮绿色文字 */
+    border-radius: 1px !important;
+    padding: 10px 18px;
+    transition: all 0.15s ease;
+    text-transform: uppercase;
+}
+
+button:hover, .btn:hover, [role="button"]:hover {
+    background: rgba(0, 20, 20, 0.95) !important;
+    border-color: rgba(0, 255, 255, 1) !important;
+    transform: none;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.8), inset 0 0 4px rgba(0, 255, 255, 0.5) !important;
+}
+
+/* 纯绿色数据流动画 */
+button:hover::before, .btn:hover::before, [role="button"]:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 0, 0.5), /* 纯绿色流光 */
+        rgba(0, 255, 180, 0.7),
+        rgba(0, 255, 0, 0.5),
+        transparent
+    );
+    animation: generalButtonFlow 0.8s ease-in-out;
+    z-index: 1;
+}
+
+@keyframes generalButtonFlow {
+    0% {
+        left: -120%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* --- 开关按钮/输入框 (The Toggle/Input) --- */
+
+/* 开关轨道/滑块 - 高亮绿色 */
+.MuiSwitch-track {
+    background: rgba(0, 100, 50, 0.8) !important;
+    border-radius: 1px !important;
+}
+
+.MuiSwitch-thumb {
+    background: rgba(200, 255, 200, 0.9) !important;
+}
+
+.Mui-checked + .MuiSwitch-track {
+    background: rgba(0, 200, 0, 0.9) !important; /* 选中亮绿 */
+    box-shadow:
+        0 0 10px rgba(0, 255, 0, 0.8),
+        inset 0 0 5px rgba(0, 255, 0, 0.5) !important;
+}
+
+.Mui-checked .MuiSwitch-thumb {
+    background: rgba(255, 255, 255, 1) !important;
+    box-shadow:
+        0 0 15px rgba(0, 255, 0, 1),
+        0 0 25px rgba(0, 200, 0, 0.7) !important;
+    transform: scale(1.1);
+}
+
+/* 输入框 - 深色，高亮青色焦点 */
+input, textarea, select {
+    background: rgba(0, 5, 5, 0.7) !important;
+    border: 1px solid rgba(0, 255, 180, 0.3) !important;
+    color: rgba(0, 255, 180, 0.95) !important; /* 输入内容也是青色 */
+    border-radius: 1px !important;
+    padding: 6px 8px;
+    font-family: 'Consolas', 'Courier New', monospace !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: rgba(0, 255, 255, 1) !important;
+    box-shadow:
+        0 0 15px rgba(0, 255, 255, 0.8),
+        inset 0 0 5px rgba(0, 255, 255, 0.4) !important;
+    background: rgba(0, 10, 10, 0.8) !important;
+}
+
+/* --- 文本/指示器 (The Display) --- */
+
+/* 标题 - 纯白色/极亮青色，高对比度 */
+.text-primary, .title, h1, h2, h3, h4, h5, h6 {
+    color: rgba(255, 255, 255, 1) !important;
+    text-shadow: 0 0 8px rgba(0, 255, 180, 0.8);
+}
+
+.text-primary:hover, .title:hover, h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    color: rgba(0, 255, 255, 1) !important;
+    text-shadow:
+        0 0 15px rgba(0, 255, 255, 1),
+        0 0 30px rgba(0, 180, 200, 0.8) !important;
+}
+
+/* 选中标题 - 亮绿色脉冲 */
+.text-primary[class*="selected"], .title[class*="selected"] {
+    color: rgba(0, 255, 0, 1) !important;
+    text-shadow:
+        0 0 20px rgba(0, 255, 0, 1),
+        0 0 40px rgba(0, 180, 0, 0.8) !important;
+    animation: textGlowGreen 1s infinite alternate !important;
+}
+
+@keyframes textGlowGreen {
+    0% {
+        text-shadow:
+            0 0 20px rgba(0, 255, 0, 1),
+            0 0 40px rgba(0, 180, 0, 0.8);
+    }
+    100% {
+        text-shadow:
+            0 0 25px rgba(0, 255, 0, 1),
+            0 0 50px rgba(0, 255, 0, 1);
+    }
+}
+
+/* 状态指示器/速度 - 亮绿色数据流 */
+[class*="status"], [class*="connected"] {
+    background: rgba(0, 10, 5, 0.8) !important;
+    border: 1px solid rgba(0, 255, 180, 0.6) !important;
+    border-radius: 1px !important;
+    color: rgba(0, 255, 0, 0.95) !important;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+[class*="speed"], [class*="download"], [class*="upload"] {
+    color: rgba(0, 255, 180, 0.95) !important;
+    text-shadow: 0 0 8px rgba(0, 255, 180, 0.5);
+}
+
+/* '待检测' - 更急促的终端闪烁 */
+[class*="待检测"] {
+    color: rgba(255, 255, 0, 0.9) !important; /* 警告黄 */
+    font-weight: 600;
+    animation: terminalBlink 0.5s infinite step-end; /* 更急促 */
+    text-shadow: 0 0 5px rgba(255, 255, 0, 0.8);
+}
+
+@keyframes terminalBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* === 强制透明覆盖和兼容性修复（保留原作者的精髓） === */
+
+* { background-color: transparent !important; }
+
+/* 修复所有白色或浅色背景 */
+[style*="background: white"],
+[style*="background: #fff"],
+[style*="background: #ffffff"],
+[style*="background-color: white"],
+[style*="background-color: #fff"],
+[style*="background-color: #ffffff"] {
+    background: rgba(0, 10, 10, 0.9) !important;
+}
+
+/* 修复原作者的订阅卡片和拖拽图标，确保它们能以高亮青色显示 */
+/* 强制覆盖任何可能遗漏的非透明背景 */
+[style*="background-color"]:not([style*="transparent"]):not([style*="rgba(0,0,0,0"]):not(.css-1li7dvq):not(.css-l3ykv8) {
+    background-color: rgba(0, 10, 10, 0.9) !important;
+}
+
+.base-page .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium[class*="css-"] {
+    color: rgba(0, 255, 180, 0.9) !important; /* 青色图标 */
+    filter: drop-shadow(0 0 5px rgba(0, 255, 180, 0.8)) !important;
+}
+
+.base-page .css-mdbbsh:hover .MuiSvgIcon-root,
+.base-page [role="button"][aria-roledescription="sortable"]:hover .MuiSvgIcon-root {
+    color: rgba(0, 255, 255, 1) !important;
+    filter: drop-shadow(0 0 7px rgba(0, 255, 255, 1)) !important;
+}
